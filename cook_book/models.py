@@ -21,3 +21,7 @@ class Recipes(models.Model):
 
     def __str__(self):
         return f'{self.title} ({self.difficulty})'
+
+    class Meta:
+        verbose_name = 'Рецепт'
+        verbose_name_plural = 'Рецепты'
