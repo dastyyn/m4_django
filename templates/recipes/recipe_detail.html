@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button><a href="/recipe_detail/{{recipe_id.id}}/delete/">Удалить</a></button>
+<button><a href="/recipe_detail/{{recipe_id.id}}/update/">Изменить</a></button>
+<h1>Детальная информация об: <br>{{recipe_id.title}}</h1>
+<p><em>{{recipe_id.description}}</em></p>
+<p>Ингредиенты: {{recipe_id.ingredients}}</p>
+<p>Приступим к готовке:{{recipe_id.steps}}</p>
+<p>Примерная стоимость: {{recipe_id.price}} сом</p>
+<img src="{{recipe_id.image}}" alt="" width="250" height="200">
+<p>Время готовки: {{recipe_id.time_cook}} мин</p>
+<p>Сложность готовки: {{recipe_id.difficulty}}</p>
+<p>Дата добовления: {{recipe_id.created_at}}</p>
+<p>Дата обновления: {{recipe_id.updated_at}}</p>
+</body>
+</html>

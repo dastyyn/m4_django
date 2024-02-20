@@ -6,4 +6,4 @@ def books_list(request):
     if request.method == 'GET':
         books = models.Book.objects.all()
         return render(request, 'books.html',
-                      context={'books': books})
+                    context={'books': books})

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe List</title>
+</head>
+<body>
+<h1>Список рецептов</h1>
+<button><a href="/create_recipe/">Добавить</a></button>
+
+<ul>
+  {% for i in recipes %}
+  <li>
+    <h2>Название: {{i.title}}</h2>
+    <a href="/recipe_detail/{{i.id}}/"><img src="{{i.image}}" alt="" width="350" height="300"></a>
+    <p>Время готовки: {{i.time_cook}} минут</p>
+    <p>Сложность готовки: {{i.difficulty}}</p>
+  </li>
+  {%endfor%}
+</ul>
+</body>
+</html>
