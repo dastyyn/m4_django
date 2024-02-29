@@ -4,20 +4,20 @@ from . import models, forms
 
 
 def update_recipe_view(request, id):
-    recipe_id =get_object_or_404(models.Recipes, id=id)
+    recipe_id = get_object_or_404(models.Recipes, id=id)
     if request.method == 'POST':
-        form = forms.CookBookForm(request.POST, instance= recipe_id)
+        form = forms.CookBookForm(request.POST, instance=recipe_id)
         if form.is_valid():
             form.save()
             return HttpResponse('<h1>Успешно изменен в БД </h1> <a href="/"> Все рецепты:</a>')
     else:
-        form = forms.CookBookForm(instance= recipe_id)
+        form = forms.CookBookForm(instance=recipe_id)
         return render(request, template_name='recipes/update_recipe.html',
-                    context= {'form': form, 'recipe_id': recipe_id})
+                    context={'form': form, 'recipe_id': recipe_id})
 
 
 def delete_recipe_view(request, id):
-    recipe_id =  get_object_or_404(models.Recipes, id=id)
+    recipe_id = get_object_or_404(models.Recipes, id=id)
     recipe_id.delete()
     return HttpResponse('<h1>Успешно удален из БД </h1> <a href="/"> Все рецепты:</a>')
 
@@ -30,10 +30,8 @@ def create_recipe_view(request):
             return HttpResponse('<h1>Успешно добавлен в БД </h1> <a href="/"> Все рецепты:</a>')
     else:
         form = forms.CookBookForm()
-    return render(request=request,template_name= 'recipes/create_recipe.html', 
+    return render(request=request,template_name='recipes/create_recipe.html',
                     context={'form': form})
-
-
 
 
 def cookbook_list(request):

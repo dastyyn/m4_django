@@ -1,21 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-<button><a href="/recipe_detail/{{recipe_id.id}}/delete/">Удалить</a></button>
-<button><a href="/recipe_detail/{{recipe_id.id}}/update/">Изменить</a></button>
-<h1>Детальная информация об: <br>{{recipe_id.title}}</h1>
-<p><em>{{recipe_id.description}}</em></p>
-<p>Ингредиенты: {{recipe_id.ingredients}}</p>
-<p>Приступим к готовке:{{recipe_id.steps}}</p>
-<p>Примерная стоимость: {{recipe_id.price}} сом</p>
-<img src="{{recipe_id.image}}" alt="" width="250" height="200">
-<p>Время готовки: {{recipe_id.time_cook}} мин</p>
-<p>Сложность готовки: {{recipe_id.difficulty}}</p>
-<p>Дата добовления: {{recipe_id.created_at}}</p>
-<p>Дата обновления: {{recipe_id.updated_at}}</p>
-</body>
-</html>
+{% include 'recipes/header.html' %}
+
+<div class="container">
+    <h1 class="display-4">{{ recipe_id.title }}</h1>
+    <p class="lead"><em>{{ recipe_id.description }}</em></p>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{recipe_id.image}}" alt="{{ recipe_id.title }}" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item">Ингредиенты: {{ recipe_id.ingredients }}</li>
+                <li class="list-group-item">Приступим к готовке: {{ recipe_id.steps }}</li>
+                <li class="list-group-item">Примерная стоимость: {{ recipe_id.price }} сом</li>
+                <li class="list-group-item">Время готовки: {{ recipe_id.time_cook }} мин</li>
+                <li class="list-group-item">Сложность готовки: {{ recipe_id.difficulty }}</li>
+                <li class="list-group-item">Дата добавления: {{ recipe_id.created_at }}</li>
+                <li class="list-group-item">Дата обновления: {{ recipe_id.updated_at }}</li>
+            </ul>
+            <div class="mt-4">
+                <a href="/recipe_detail/{{ recipe_id.id }}/delete/" class="btn btn-danger">Удалить</a>
+                <a href="/recipe_detail/{{ recipe_id.id }}/update/" class="btn btn-primary">Изменить</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'recipes/footer.html' %}
+

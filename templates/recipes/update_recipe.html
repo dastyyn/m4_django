@@ -1,15 +1,94 @@
-<!DOCTYPE html>
+{% include 'recipes/header.html' %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Изменить</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 120px;
+            justify-content: center;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .form-edit form {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            width: 100%;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            justify-content: center;
+            border-radius: 4px;
+        }
+        .form-edit form input[type="text"],
+        .form-edit form input[type="email"],
+        .form-edit form textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-edit form button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: calc(100% - 22px);
+        }
+        .form-edit form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-edit {
+            width: 500px;
+            height: 50px;
+            background-color: #bc16f3;
+            border-radius: 10px;
+            border: none;
+            color: white;
+            font-family: "Roboto Light", sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .btn-edit:hover {
+            filter: brightness(110%);
+        }
+    </style>
 </head>
 <body>
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Изменить</button>
-</form>
-
+<div class="container">
+    <div class="content">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-edit">Изменить</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
+{% include 'recipes/footer.html' %}
