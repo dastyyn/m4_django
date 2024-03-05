@@ -1,7 +1,8 @@
 {% include 'recipes/header.html' %}
 
+{% block styles %}
 <style>
-  .recipe-grid {
+  .food-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -25,18 +26,20 @@
     }
   }
 </style>
+{% endblock %}
 
-<div class="recipe-grid">
-  {% for i in recipes %}
+{% block content %}
+<div class="food-grid">
+  {% for item in food %}
   <div class="card">
-    <img src="{{ i.image }}" class="card-img-top" alt="...">
+    <img src="{{ item.image }}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">{{ i.title }}</h5>
-      <p class="card-text">Время готовки: {{ i.time_cook }} минут</p>
-      <a href="/recipe_detail/{{ i.id }}/" class="btn btn-primary">Начать готовить</a>
+      <h5 class="card-title">{{ item.title }}</h5>
+      <p class="card-text">Время готовки: {{ item.time }} минут</p>
     </div>
   </div>
   {% endfor %}
 </div>
+{% endblock %}
 
 {% include 'recipes/footer.html' %}

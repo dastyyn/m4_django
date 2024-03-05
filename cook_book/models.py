@@ -15,7 +15,7 @@ class Recipes(models.Model):
     image = models.URLField(verbose_name='Ссылка на изображение:')
     time_cook = models.PositiveIntegerField(verbose_name='Время готовки:')
     difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES,
-                                default='easy', verbose_name='Сложность приготовления')
+                                default='easy', verbose_name='Сложность приготовления', null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
