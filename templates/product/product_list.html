@@ -1,10 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% include 'recipes/header.html' %}
+
+<style>
+    .recipe-container {
+        margin-top: 70px; /* Добавляем отступ сверху, чтобы контейнер не налегал на хэдер */
+        padding: 0 20px; /* Добавляем отступы по бокам для контейнера */
+    }
+
+    .product {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .product h2 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .product p {
+        margin: 0;
+    }
+
+    .product strong {
+        font-weight: bold;
+    }
+
+    .dropdown {
+        margin-bottom: 10px;
+        position: relative; /* Добавляем относительное позиционирование */
+    }
+
+    .dropdown-menu {
+        z-index: 1000; /* Устанавливаем высокий z-index для выпадающего списка */
+    }
+</style>
+
+<!-- Подключение Bootstrap CSS и JavaScript -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<div class="recipe-container">
+    <!-- HTML разметка для выпадающего списка -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filter by Tag
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item active" href="{% url 'product_list' %}">All</a>
+        {% for tag in all_tags %}
+          <a class="dropdown-item" href="{% url 'product_list' %}?tag={{ tag.id }}">{{ tag.name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% for product in all_products %}
+        <div class="product">
+            <h2>Product</h2>
+            <p>
+                <strong>Title:</strong> {{ product.title }}<br>
+                <strong>Description:</strong> {{ product.description }}<br>
+                <strong>Price:</strong> {{ product.price }}<br>
+                <strong>Tags:</strong>
+                {% for tag in product.tag.all %}
+                    {{ tag.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    {% endfor %}
+</div>
+
+{% include 'recipes/footer.html' %}

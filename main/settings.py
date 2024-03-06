@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'book',
     'cook_book',
     'parser_app',
+    'product',
 ]
 
 MIDDLEWARE = [
